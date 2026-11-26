@@ -52,4 +52,22 @@ utils::file.edit(here::here("make.R")) #Add a make.R
 
 # III - Load your project
 
-To use your now setup RCompendium
+To use your now setup RCompendium, you need to setup your make.r file. This file will be used to load all the packages and functions you will need for your project.
+
+Packages called as library() or require() will be added to the Depends field of the DESCRIPTION file
+Packages called as :: or ::: will be added to the Imports field of the DESCRIPTION file
+
+If you need to list some packages in the Imports field, you can add library(package you want to call) in the setup.R file
+
+```r
+#Execute the scripts and looks for all packages used in the project and add them to the DESCRIPTION file
+
+rdeps::add_deps()
+
+# Install packages listed in the DESCRIPTION file 
+devtools::install_deps(upgrade="never")
+
+# Load project (packages and functions)
+devtools::load_all()
+```
+
