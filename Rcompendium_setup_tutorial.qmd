@@ -1,0 +1,55 @@
+---
+title: "Untitled"
+format: html
+---
+
+---
+title: "Untitled"
+format: html
+---
+
+Welcome to the tutorial on building your own RCompendium.
+
+# I - Initial setup
+
+## 1 - Positron 
+
+First, if it is your first time using Positron, you will need to foloww a few steps to setup your environment. 
+You can follow these instrutions to set up your environment: https://frbcesab.github.io/rsetup/chapters/reproducible-research.html
+
+## 2 - RStudio
+
+TBD
+
+If you have already set up your environment, you can skip to the next section.
+
+# II - Create a new RCompendium
+
+Create a new Positron project: New Folder from Template > R Project
+
+- Choose a name for your project (without punctuation), e.g., practice
+- Select the location where the new project will be created
+- Do not initialize git
+- Click Next
+- Verify that the latest version is selected
+- Do not initialize renv
+- Click Create
+
+First, create a .R file called "setup.R". This file will be used to write the command to create the RCompendium.
+
+Second, run these commands in the "setup.R" file to create the RCompendium:
+
+```R
+file.create(".here") #locate all future files
+
+utils::file.edit(here::here("README.md")) #README file
+
+rcompendium::add_description() #Description file
+rcompendium::add_license(license = "GPL-2") #Add a license
+rcompendium::add_compendium(compendium = c("data", "analyses", "R", "figures", "outputs"))
+utils::file.edit(here::here("make.R")) #Add a make.R
+```
+
+# III - Load your project
+
+To use your now setup RCompendium
